@@ -63,8 +63,8 @@ img {
     vertical-align: middle;
     margin-left: 25px;
     margin-right: 25px;
-    width: 58px;
-    height: 58px;
+    max-width: 58px;
+    max-height: 58px;
 }
 
 strong {
