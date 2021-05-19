@@ -1,17 +1,27 @@
 let socket = new WebSocket("ws://127.0.0.1:8072");
 let animation = null;
 
+socket.onerror = function(event) { //If the panel is closed or the page is opened before panel is open.
+  if (socket.CLOSED)
+  {
+    document.getElementById("race").style = "display: none";
+    document.getElementById("welcome").style = "display: flex";
+    document.getElementById("welcome-head").style = "font-size: 40pt";
+    document.getElementById("welcome-head").innerHTML = "Disconnected. Open panel and refresh page to reconnect."
+  }
+}
+
 socket.onmessage = function(event) {
   let message = event.data;
 
   let obj = JSON.parse(message);
   
-  if (obj.name == undefined) {
+  if (obj.name == undefined) { //Hide races and show welcome
     document.getElementById("race").style = "display: none";
     document.getElementById("welcome").style = "display: flex";
     return;
   }
-  else {
+  else { //Hide welcome and show races
     document.getElementById("welcome").style = "display: none";
     document.getElementById("race").style = "display: inherit";
   }
@@ -49,11 +59,11 @@ function animateScoreboard() {
   let height = document.getElementById("scoreboard").children[0].offsetHeight; //Height of each lane
   let length = document.getElementById("scoreboard").children.length; //Number of lanes
 
-  if (height * length <= height * 7) { //If <= 7 lanes are showing
+  if (height * length <= height * 6) { //If <= 6 lanes are showing
       return;
   }
 
-  let necessaryOffset = (height * (length - 7)); //Maximizes the number of lanes on screen
+  let necessaryOffset = (height * (length - 6)); //Maximizes the number of lanes on screen
 
   if (animation != null) { //Makes the jittery effect described above much less severe
     animation.cancel();

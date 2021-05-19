@@ -46,7 +46,7 @@ h6 {
 #race-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 48pt;
+    font-size: 58pt;
     color: #ffffff;
     margin-top: 0px;
     max-width: 1750px;
@@ -74,13 +74,13 @@ strong {
 ol {
     padding-left: 0px;
     list-style-position: inside;
-    max-height: 672px;
+    max-height: 700px;
 }
 
 li {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 48pt;
+    font-size: 58pt;
     color: #ffffff;
 }
 
