@@ -59,11 +59,11 @@ function animateScoreboard() {
   let height = document.getElementById("scoreboard").children[0].offsetHeight; //Height of each lane
   let length = document.getElementById("scoreboard").children.length; //Number of lanes
 
-  if (height * length <= height * 6) { //If <= 6 lanes are showing
+  if (height * length <= height * 5) { //If <= 6 lanes are showing
       return;
   }
 
-  let necessaryOffset = (height * (length - 6)); //Maximizes the number of lanes on screen
+  let necessaryOffset = (height * (length - 5)) + (height * 2); //Maximizes the number of lanes on screen
 
   if (animation != null) { //Makes the jittery effect described above much less severe
     animation.cancel();
